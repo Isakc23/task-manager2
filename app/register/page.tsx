@@ -37,54 +37,59 @@ export default function Register() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded shadow">
-      <h1 className="text-2xl font-bold mb-6">Registro</h1>
-      
-      {error && (
-        <div className="mb-4 p-3 bg-red-100 text-red-700 rounded">
-          {error}
-        </div>
-      )}
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
+      <div className="p-10 bg-white shadow-xl rounded-2xl w-full max-w-md border border-gray-200">
+        <h1 className="text-3xl font-semibold text-center text-gray-800 mb-6">Crear cuenta</h1>
 
-      <form onSubmit={handleRegister} className="space-y-4">
-        <div>
-          <label className="block mb-1">Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-2 border rounded"
-            required
-          />
-        </div>
-        
-        <div>
-          <label className="block mb-1">Contraseña</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-2 border rounded"
-            minLength={8}
-            required
-          />
-        </div>
+        {error && (
+          <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-md text-sm text-center">
+            {error}
+          </div>
+        )}
 
-        <button
-          type="submit"
-          disabled={loading}
-          className={`w-full p-2 rounded text-white ${
-            loading ? 'bg-gray-400' : 'bg-blue-600 hover:bg-blue-700'
-          }`}
-        >
-          {loading ? 'Registrando...' : 'Registrarse'}
-        </button>
-      </form>
+        <form onSubmit={handleRegister} className="space-y-5">
+          <div>
+            <label className="block text-sm font-medium text-gray-600 mb-1">Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+              placeholder="tu@email.com"
+              required
+            />
+          </div>
 
-      <div className="mt-4 text-center">
-        <Link href="/login" className="text-blue-600 hover:underline">
-          ¿Ya tienes cuenta? Inicia sesión
-        </Link>
+          <div>
+            <label className="block text-sm font-medium text-gray-600 mb-1">Contraseña</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+              placeholder="••••••••"
+              minLength={8}
+              required
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={loading}
+            className={`w-full py-2 rounded-xl text-white font-medium transition-colors duration-200 shadow ${
+              loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'
+            }`}
+          >
+            {loading ? 'Registrando...' : 'Registrarse'}
+          </button>
+        </form>
+
+        <p className="mt-6 text-sm text-center text-gray-500">
+          ¿Ya tienes cuenta?{' '}
+          <Link href="/login" className="text-blue-600 hover:underline font-medium">
+            Inicia sesión
+          </Link>
+        </p>
       </div>
     </div>
   );
